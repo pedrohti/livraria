@@ -147,6 +147,7 @@
     </Compile>
     <Compile Include="Models\Livro.cs" />
     <Compile Include="DAL\LivroInitialize.cs" />
+    <Compile Include="Models\LivroViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
