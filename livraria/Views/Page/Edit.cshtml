@@ -1,0 +1,87 @@
+﻿@*@model livraria.Models.Livro*@
+
+@{
+    ViewBag.Title = "Edit";
+    var id = @ViewBag.LivroId;
+}
+
+
+<form action="/">
+    <div class="form-group">
+        <label>ISBN</label>
+        <input type="text" class="form-control" id="isbn">
+    </div>
+    <div class="form-group">
+        <label>Autor</label>
+        <input type="text" class="form-control" id="autor">
+    </div>
+    <div class="form-group">
+        <label>Titulo</label>
+        <input type="text" class="form-control" id="titulo">
+    </div>
+    <div class="form-group">
+        <label>Preco</label>
+        <input type="text" class="form-control"  id="preco">
+    </div>
+    <div class="form-group">
+        <label>Data Publicação</label>
+        <input type="text" class="form-control"  id="data">
+    </div>
+    <div class="form-group">
+        <label>Capa</label>
+        <input type="text" class="form-control"  id="capa">
+    </div>
+    <div class="form-group">
+        <label>Capa Atual</label>
+        <div>
+            <img id="capaAtual" style="width:90px;">
+        </div>        
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<script>
+    $.ajax({
+        type: 'GET',
+        url: '/api/livro/' + @id,
+        dataType: "json",
+        success: (data) => {
+            console.log(data)
+            $("#isbn").val(data.ISBN);
+            $("#autor").val(data.Autor);
+            $("#titulo").val(data.Titulo);
+            $("#preco").val(data.Preco);
+            $("#data").val(data.DataPublicacao);
+            $("#capa").val(data.Capa);
+            $("#capaAtual").html(data.Titulo);
+            $("#capaAtual").attr("src", data.Capa);
+        }
+    })
+
+
+    $("form").submit((e) => {
+        console.log("E", e)
+        //e.preventDefault();
+
+        var formData = {
+            'Id': @id,
+            'ISBN': $('input[id=isbn]').val(),
+            'Autor': $('input[id=autor]').val(),
+            'Titulo': $('input[id=titulo]').val(),
+            'Preco': $('input[id=preco]').val(),
+            'DataPublicacao': $('input[id=data]').val(),
+            'Capa': $('input[id=capa]').val(),
+        }
+
+        $.ajax({
+            type: 'PUT',
+            url: '/api/livro/' + @id,
+            data: formData,
+            dataType: 'json',
+        }).done((data) => {
+            console.log(data)
+            //window.location.href = '/'
+        })
+        console.log(formData)
+    })
+</script>

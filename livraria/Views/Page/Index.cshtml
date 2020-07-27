@@ -1,0 +1,67 @@
+﻿@model IEnumerable<livraria.Models.Livro>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="acimaTabela">
+    <div class="criar"><a href="@Url.Action("Create", "Page")" class="fa fa-plus btn btn-success"></a></div>
+    <div class="busca"><input class="form-control" id="search" type="text" placeholder="Pesquisar..."></div>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Capa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Titulo)
+            </th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody id="tbLivro"></tbody>
+
+</table>
+
+<script>
+    $("#search").on("keyup", function () {
+		var value = $(this).val().toLowerCase();
+		$("#tbLivro tr").filter(function () {
+			$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+		});
+	});
+
+	$.ajax({
+		type: 'GET',
+		url: '/api/livro',
+		dataType: "json",
+        success: (data) => {
+            var trHTML = '';
+            $.each(data, function (i, item) {
+                trHTML += '<tr>'
+                    + '</td><td class="col-md"> <img src="' + item.Capa + '" style="width: 90px;" /></td>'
+                    + '</td><td>' + item.Titulo
+                    + '<td> <a href="/Page/Edit/' + item.Id + '" class="fa fa-edit btn btn-success"></a>'
+                    + ' <a href="/Page/Details/' + item.Id + '" class="fa fa-list btn btn-primary"></a>'
+                    + ' <a href="/Page/Delete/' + item.Id + '" class="fa fa-trash btn btn-danger"></a> </td></tr>';
+            });
+            $('#tbLivro').append(trHTML);
+		}
+    })
+    </script>
+<style>
+
+    .acimaTabela {
+        display: flex;
+        align-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        margin-top: 40px;
+    }
+
+        .acimaTabela .criar {
+            flex: 1;
+        }
+</style

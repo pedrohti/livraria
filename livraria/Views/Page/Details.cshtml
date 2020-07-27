@@ -1,0 +1,92 @@
+﻿@{
+    ViewBag.Title = "Deletar";
+    var id = @ViewBag.LivroId;
+}
+
+<form action="/">
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">ISBN</label>
+        <div class="col-sm-10">
+            <p id="isbn"></p>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Autor</label>
+        <div class="col-sm-10">
+            <p id="autor"></p>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Titulo</label>
+        <div class="col-sm-10">
+            <p id="titulo"></p>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Preço</label>
+        <div class="col-sm-10">
+            <p id="preco"></p>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Data da Publicação</label>
+        <div class="col-sm-10">
+            <p id="data"></p>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Capa</label>
+        <div class="col-sm-10">
+            @*<input type="text" class="form-control" id="capa">*@
+            <img id="capaAtual" style="width:90px;">
+        </div>
+    </div>
+    <a href="/" class="btn btn-success">Voltar</a>
+</form>
+
+
+
+<script>
+    $.ajax({
+        type: 'GET',
+        url: '/api/livro/' + @id,
+        dataType: "json",
+        success: (data) => {
+            console.log(data)
+            $("#isbn").html(data.ISBN);
+            $("#autor").html(data.Autor);
+            $("#titulo").html(data.Titulo);
+            $("#preco").html(data.Preco);
+            $("#data").html(data.DataPublicacao);
+            $("#capa").html(data.Capa);
+            $("#capaAtual").attr("src", data.Capa);
+        }
+    })
+
+
+    @*$("form").submit((e) => {
+        console.log("E", e)
+        //e.preventDefault();
+
+        var formData = {
+            'Id': @id,
+            'ISBN': $('input[id=isbn]').val(),
+            'Autor': $('input[id=autor]').val(),
+            'Titulo': $('input[id=titulo]').val(),
+            'Preco': $('input[id=preco]').val(),
+            'DataPublicacao': $('input[id=data]').val(),
+            'Capa': $('input[id=capa]').val(),
+        }
+
+        $.ajax({
+            type: 'DELETE',
+            url: '/api/livro?id=' + @id,
+            data: formData,
+            dataType: 'json',
+        }).done((data) => {
+            console.log(data)
+            //window.location.href = '/'
+        })
+        console.log(formData)
+    })*@
+</script>
