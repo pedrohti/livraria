@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
 using System.Linq;
-using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using livraria.DAL;
-using livraria.Models;
 
 namespace livraria.Controllers
 {
-    public class PageController : Controller
+	public class PageController : Controller
     {
         private LivroContext db = new LivroContext();
 

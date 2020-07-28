@@ -1,5 +1,5 @@
-﻿@{
-    ViewBag.Title = "Deletar";
+@{
+    ViewBag.Title = "Detalhes";
     var id = @ViewBag.LivroId;
 }
 
@@ -37,7 +37,6 @@
     <div class="form-group row">
         <label class="col-sm-2 col-form-label">Capa</label>
         <div class="col-sm-10">
-            @*<input type="text" class="form-control" id="capa">*@
             <img id="capaAtual" style="width:90px;">
         </div>
     </div>
@@ -62,31 +61,4 @@
             $("#capaAtual").attr("src", data.Capa);
         }
     })
-
-
-    @*$("form").submit((e) => {
-        console.log("E", e)
-        //e.preventDefault();
-
-        var formData = {
-            'Id': @id,
-            'ISBN': $('input[id=isbn]').val(),
-            'Autor': $('input[id=autor]').val(),
-            'Titulo': $('input[id=titulo]').val(),
-            'Preco': $('input[id=preco]').val(),
-            'DataPublicacao': $('input[id=data]').val(),
-            'Capa': $('input[id=capa]').val(),
-        }
-
-        $.ajax({
-            type: 'DELETE',
-            url: '/api/livro?id=' + @id,
-            data: formData,
-            dataType: 'json',
-        }).done((data) => {
-            console.log(data)
-            //window.location.href = '/'
-        })
-        console.log(formData)
-    })*@
 </script>

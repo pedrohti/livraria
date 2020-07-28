@@ -1,19 +1,14 @@
-using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
-using System.Web.Http.Description;
 using livraria.DAL;
 using livraria.Models;
 
 namespace livraria.Controllers
 {
-    public class LivroController : ApiController
+	public class LivroController : ApiController
     {
         private LivroContext db = new LivroContext();
 
@@ -46,33 +41,19 @@ namespace livraria.Controllers
             Dispose();
         }
 
-        //public string PostIsbn(long isbn)
-        //{
-        //    var livro = db.Livros.Where(l => l.ISBN == isbn);
+		public string PostIsbn(long isbn)
+		{
+			var livro = db.Livros.Where(l => l.ISBN == isbn);
 
-        //    if (livro.Count() == 0)
-        //    {
-        //        return "ok";
-        //    } else
-        //    {
-        //        return "ISBN já cadastrado";
-        //    }
-        //}
-
-        // POST: api/Livro
-        [ResponseType(typeof(Livro))]
-        //public IHttpActionResult PostLivro(Livro livro)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
-
-        //    db.Livros.Add(livro);
-        //    db.SaveChanges();
-
-        //    return CreatedAtRoute("DefaultApi", new { id = livro.Id }, livro);
-        //}
+			if (livro.Count() == 0)
+			{
+				return "ok";
+			}
+			else
+			{
+				return "nok";
+			}
+		}
 
         public string Post([FromBody] Livro livro)
         {
@@ -111,9 +92,5 @@ namespace livraria.Controllers
             base.Dispose(disposing);
         }
 
-        private bool LivroExists(int id)
-        {
-            return db.Livros.Count(e => e.Id == id) > 0;
-        }
     }
 }

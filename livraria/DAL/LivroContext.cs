@@ -8,7 +8,7 @@ namespace livraria.DAL
     {
         public LivroContext() : base("LivroContext")
         {
-            Database.SetInitializer<LivroContext>(new CreateDatabaseIfNotExists<LivroContext>());
+            Database.SetInitializer(new CreateDatabaseIfNotExists<LivroContext>());
         }
         public DbSet<Livro> Livros { get; set; }
 

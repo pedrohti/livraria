@@ -1,7 +1,5 @@
-﻿@*@model livraria.Models.Livro*@
-
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Editar";
     var id = @ViewBag.LivroId;
 }
 
@@ -35,7 +33,7 @@
         <label>Capa Atual</label>
         <div>
             <img id="capaAtual" style="width:90px;">
-        </div>        
+        </div>
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
@@ -60,9 +58,7 @@
 
 
     $("form").submit((e) => {
-        console.log("E", e)
-        //e.preventDefault();
-
+        
         var formData = {
             'Id': @id,
             'ISBN': $('input[id=isbn]').val(),
@@ -80,7 +76,6 @@
             dataType: 'json',
         }).done((data) => {
             console.log(data)
-            //window.location.href = '/'
         })
         console.log(formData)
     })
