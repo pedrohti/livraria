@@ -27,7 +27,7 @@ namespace livraria.Models
 					Titulo="Pesadelos e Paisagens Noturnas - Vol. 1",
 					Preco=45.91,
 					DataPublicacao=DateTime.Parse("2004-08-19"),
-					Capa="https://m.media-amazon.com/images/I/51rG7b0DjJL.jpg",
+					Capa="https://i.imgur.com/40arP1w.jpeg",
 				}
 			};
 
