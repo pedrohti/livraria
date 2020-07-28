@@ -31,9 +31,13 @@ namespace livraria.Controllers
         {
             return View();
         }
+		public ActionResult Contact()
+		{
+			return View();
+		}
 
-        // GET: Page/Edit/5
-        public ActionResult Edit(int? id)
+		// GET: Page/Edit/5
+		public ActionResult Edit(int? id)
         {
             if (id == null)
             {
