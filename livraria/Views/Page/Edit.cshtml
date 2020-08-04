@@ -7,27 +7,27 @@
 <form action="/">
     <div class="form-group">
         <label>ISBN</label>
-        <input type="text" class="form-control" id="isbn">
+        <input type="text" class="form-control" id="isbn" required>
     </div>
     <div class="form-group">
         <label>Autor</label>
-        <input type="text" class="form-control" id="autor">
+        <input type="text" class="form-control" id="autor" required>
     </div>
     <div class="form-group">
         <label>Titulo</label>
-        <input type="text" class="form-control" id="titulo">
+        <input type="text" class="form-control" id="titulo" required>
     </div>
     <div class="form-group">
         <label>Preco</label>
-        <input type="number" class="form-control" min="1" step="any" id="preco">
+        <input type="number" class="form-control" min="1" step="any" id="preco" required>
     </div>
     <div class="form-group">
         <label>Data Publicação</label>
-        <input type="text" class="form-control"  id="data">
+		<input type="date" class="form-control" id="data" required>
     </div>
 	<div class="form-group">
 		<label>Capa</label> <label>Capa</label> <i class="fa fa-question-circle" aria-hidden="true" data-toggle="tooltip" title="Link da imagem."></i>
-		<input type="text" class="form-control" id="capa">
+		<input type="text" class="form-control" id="capa" required>
 	</div>
     <div class="form-group">
         <label>Capa Atual</label>
@@ -46,11 +46,13 @@
         dataType: "json",
         success: (data) => {
             console.log(data)
+			//moment.locale('pt-br');
+			var dataConvertida = moment(data.DataPublicacao).format('YYYY-MM-DD');
             $("#isbn").val(data.ISBN);
             $("#autor").val(data.Autor);
             $("#titulo").val(data.Titulo);
             $("#preco").val(data.Preco);
-            $("#data").val(data.DataPublicacao);
+            $("#data").val(dataConvertida);
             $("#capa").val(data.Capa);
             $("#capaAtual").html(data.Titulo);
             $("#capaAtual").attr("src", data.Capa);

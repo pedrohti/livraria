@@ -46,20 +46,22 @@
 
 
 
-<script>
+	<script>
     $.ajax({
         type: 'GET',
         url: '/api/livro/' + @id,
         dataType: "json",
         success: (data) => {
-            console.log(data)
+			console.log(data)
+			moment.locale('pt-br');
+			var dataConvertida = moment(data.DataPublicacao).format('L');
             $("#isbn").html(data.ISBN);
             $("#autor").html(data.Autor);
             $("#titulo").html(data.Titulo);
             $("#preco").html(data.Preco);
-            $("#data").html(data.DataPublicacao);
+			$("#data").html(dataConvertida);
             $("#capa").html(data.Capa);
             $("#capaAtual").attr("src", data.Capa);
         }
     })
-</script>
+	</script>
