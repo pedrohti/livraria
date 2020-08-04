@@ -1,47 +1,48 @@
-@{
+﻿@{
     ViewBag.Title = "Detalhes";
     var id = @ViewBag.LivroId;
 }
 
-<form action="/">
-    <div class="form-group row">
-        <label class="col-sm-2 col-form-label">ISBN</label>
-        <div class="col-sm-10">
-            <p id="isbn"></p>
-        </div>
-    </div>
-    <div class="form-group row">
-        <label class="col-sm-2 col-form-label">Autor</label>
-        <div class="col-sm-10">
-            <p id="autor"></p>
-        </div>
-    </div>
-    <div class="form-group row">
-        <label class="col-sm-2 col-form-label">Titulo</label>
-        <div class="col-sm-10">
-            <p id="titulo"></p>
-        </div>
-    </div>
-    <div class="form-group row">
-        <label class="col-sm-2 col-form-label">Preço</label>
-        <div class="col-sm-10">
-            <p id="preco"></p>
-        </div>
-    </div>
-    <div class="form-group row">
-        <label class="col-sm-2 col-form-label">Data da Publicação</label>
-        <div class="col-sm-10">
-            <p id="data"></p>
-        </div>
-    </div>
-    <div class="form-group row">
-        <label class="col-sm-2 col-form-label">Capa</label>
-        <div class="col-sm-10">
-            <img id="capaAtual" style="width:90px;">
-        </div>
-    </div>
-    <a href="/" class="btn btn-success">Voltar</a>
-</form>
+	<form action="/">
+		<div class="form-group row">
+			<label class="col-sm-2 col-form-label">ISBN</label>
+			<div class="col-sm-10">
+				<p id="isbn"></p>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-2 col-form-label">Autor</label>
+			<div class="col-sm-10">
+				<p id="autor"></p>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-2 col-form-label">Titulo</label>
+			<div class="col-sm-10">
+				<p id="titulo"></p>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-2 col-form-label">Preço</label>
+			<div class="col-sm-10">
+				<p id="preco"></p>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-2 col-form-label">Data da Publicação</label>
+			<div class="col-sm-10">
+				<p id="data"></p>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-2 col-form-label">Capa</label>
+			<div class="col-sm-10">
+				<img id="capaAtual" style="width:90px;">
+			</div>
+		</div>
+		<a href="/" class="btn btn-primary">Voltar</a>
+		<a href="/Page/Edit/@id" class="btn btn-success">Editar</a>
+	</form>
 
 
 

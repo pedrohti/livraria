@@ -18,14 +18,14 @@
 	</div>
 	<div class="form-group">
 		<label>Preço</label>
-		<input type="text" class="form-control" id="preco" required>
+		<input type="number" class="form-control" min="1" step="any" id="preco">
 	</div>
 	<div class="form-group">
 		<label>Data da Publicação</label>
 		<input type="date" class="form-control" id="data" required>
 	</div>
 	<div class="form-group">
-		<label>Capa</label>
+		<label>Capa</label> <i class="fa fa-question-circle" aria-hidden="true" data-toggle="tooltip" title="Link da imagem."></i>
 		<input type="text" class="form-control" id="capa" required>
 	</div>
 	<button type="submit" class="btn btn-primary">Submit</button>

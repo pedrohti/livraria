@@ -1,4 +1,4 @@
-@{
+﻿@{
     ViewBag.Title = "Editar";
     var id = @ViewBag.LivroId;
 }
@@ -19,23 +19,24 @@
     </div>
     <div class="form-group">
         <label>Preco</label>
-        <input type="text" class="form-control"  id="preco">
+        <input type="number" class="form-control" min="1" step="any" id="preco">
     </div>
     <div class="form-group">
         <label>Data Publicação</label>
         <input type="text" class="form-control"  id="data">
     </div>
-    <div class="form-group">
-        <label>Capa</label>
-        <input type="text" class="form-control"  id="capa">
-    </div>
+	<div class="form-group">
+		<label>Capa</label> <label>Capa</label> <i class="fa fa-question-circle" aria-hidden="true" data-toggle="tooltip" title="Link da imagem."></i>
+		<input type="text" class="form-control" id="capa">
+	</div>
     <div class="form-group">
         <label>Capa Atual</label>
         <div>
             <img id="capaAtual" style="width:90px;">
         </div>
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <a href="/" class="btn btn-primary">Voltar</a>
+    <button type="submit" class="btn btn-success">Submit</button>
 </form>
 
 <script>
@@ -58,7 +59,7 @@
 
 
     $("form").submit((e) => {
-        
+
         var formData = {
             'Id': @id,
             'ISBN': $('input[id=isbn]').val(),
